@@ -7,7 +7,7 @@ android {
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "vn.iotstar.ltmob280325"
+        applicationId = "vn.iotstar.ltmob280325.part2"
         minSdk = 24
         targetSdk = 35
         versionCode = 1
