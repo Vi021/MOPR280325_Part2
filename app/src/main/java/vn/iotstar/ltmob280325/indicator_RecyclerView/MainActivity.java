@@ -1,5 +1,6 @@
 package vn.iotstar.ltmob280325.indicator_RecyclerView;
 
+import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
@@ -25,7 +26,12 @@ public class MainActivity extends AppCompatActivity {
     private IconAdapter iconAdapter;
     private SearchView srch;
 
-    public MainActivity() {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_main);
+
         icons = new ArrayList<>();
         for (int i = 1; i <= 20; i++) {
             icons.add(new IconModel(R.drawable.ic_launcher_foreground, "Icon " + i));
@@ -65,21 +71,12 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
-    }
-
     // ChatGPT
     public static class LinePagerIndicatorDecoration extends RecyclerView.ItemDecoration {
         private final int colorActive = 0xFFFFFFFF; // White for active indicator
         private final int colorInactive = 0x66FFFFFF; // Transparent white for inactive indicator
 
-        //private final float DP = Resources.getSystem().getDisplayMetrics().density;
-        private MainActivity mainActivity;
-        private final float DP = mainActivity.getResources().getDisplayMetrics().density;
+        private final float DP = Resources.getSystem().getDisplayMetrics().density;
         private final int indicatorHeight = (int) (16 * DP);
         private final float indicatorItemLength = 16 * DP;
         private final float indicatorItemPadding = 8 * DP;
